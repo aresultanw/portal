@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anweshika Scholarship - Certificate of Achievement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  
+  <!-- Critical: Load database script so certificate can resolve records offline -->
+  <script type="text/javascript" src="js/cScript-2026.js"></script>
+
+  <style>
+    :root {
+      --primary-navy: #0f2b48;
+      --gold-accent: #c59b27;
+      --light-gold: #f4e8c1;
+      --border-gray: #dcdfe3;
+      --text-dark: #22252a;
+      --text-muted: #555b66;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #e9edf2;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+      color: var(--text-dark);
+    }
+
+    /* Print & Action Controls */
+    .controls {
+      margin-bottom: 25px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-download {
+      background: var(--gold-accent);
+      color: #fff;
+    }
+
+    .btn-download:hover {
+      background: #aa841d;
+    }
+
+    .btn-back {
+      background: #fff;
+      color: var(--primary-navy);
+      border: 1px solid var(--border-gray);
+    }
+
+    .btn-back:hover {
+      background: #f1f3f5;
+    }
+
+    /* A4 Landscape Certificate Canvas */
+    .certificate-wrapper {
+      width: 297mm;
+      height: 210mm;
+      background: #ffffff;
+      padding: 12mm;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .border-outer {
+      border: 3px solid var(--gold-accent);
+      height: 100%;
+      padding: 5px;
+    }
+
+    .border-inner {
+      border: 1.5px solid var(--primary-navy);
+      height: 100%;
+      padding: 22px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: radial-gradient(circle, rgba(255,255,255,1) 75%, rgba(247, 249, 252, 0.8) 100%);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+    }
+
+    .institution-name {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      color: var(--primary-navy);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .institution-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .cert-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--gold-accent);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .cert-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      width: 60%;
+      height: 1.5px;
+      background: var(--gold-accent);
+    }
+
+    /* Body Text */
+    .body-content {
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .body-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 2px 0;
+    }
+
+    .student-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--primary-navy);
+      font-style: italic;
+      margin: 4px 0;
+    }
+
+    .meta-details {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .meta-details span strong {
+      color: var(--primary-navy);
+    }
+
+    /* Scores & Conduct Table */
+    .assessment-container {
+      display: flex;
+      gap: 15px;
+      margin: 10px 0;
+    }
+
+    .score-table-wrap {
+      flex: 3;
+    }
+
+    .conduct-card {
+      flex: 2;
+      background: #fafbfc;
+      border: 1px solid var(--border-gray);
+      border-radius: 4px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border-gray);
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: var(--primary-navy);
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .conduct-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--gold-accent);
+      padding-bottom: 3px;
+    }
+
+    .conduct-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      margin-bottom: 4px;
+    }
+
+    .conduct-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .conduct-row span:last-child {
+      font-weight: 600;
+      color: var(--primary-navy);
+    }
+
+    /* Footer Signatures */
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 10px;
+    }
+
+    .sig-block {
+      text-align: center;
+      width: 170px;
+    }
+
+    .sig-line {
+      height: 1px;
+      background: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .sig-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .seal-wrap {
+      text-align: center;
+    }
+
+    .seal {
+      width: 65px;
+      height: 65px;
+      border: 2px dashed var(--gold-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold-accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 auto;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+
+      .controls {
+        display: none !important;
+      }
+
+      .certificate-wrapper {
+        box-shadow: none;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+      }
+
+      @page {
+        size: A4 landscape;
+        margin: 6mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls (Hidden upon print / PDF save) -->
+  <div class="controls">
+    <a href="index_upd.html" class="btn btn-back">&larr; Back to Results</a>
+    <button class="btn btn-download" onclick="window.print()">Download / Print Certificate (PDF)</button>
+  </div>
+
+  <!-- Printable Certificate Area -->
+  <div class="certificate-wrapper">
+    <div class="border-outer">
+      <div class="border-inner">
+
+        <!-- Header -->
+        <div class="header">
+          <div class="institution-name">Netaji Sadharan Pathagar</div>
+          <div class="institution-sub">Balaichak, Khanakul, Hooghly, West Bengal - 712416</div>
+          <div class="cert-title">Anweshika Scholarship Examination - 2026</div>
+        </div>
+
+        <!-- Student Meta -->
+        <div class="body-content">
+          <p>This is to certify that</p>
+          <div class="student-name" id="certName">Candidate Name</div>
+          <p id="certSchoolLine" style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+            School: <strong id="certSchool" style="color: var(--primary-navy);">---</strong>
+          </p>
+          <div class="meta-details">
+            <span><strong>Roll No:</strong> <span id="certRoll">---</span></span>
+            <span><strong>Class:</strong> <span id="certClass">---</span></span>
+            <span><strong>Guardian's Name:</strong> <span id="certGuardian">---</span></span>
+            <span><strong>Date:</strong> <span id="certDate">---</span></span>
+          </div>
+        </div>
+
+        <!-- Assessment Section -->
+        <div class="assessment-container">
+          <!-- Academic Scores -->
+          <div class="score-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Assessment Section</th>
+                  <th>Full Marks</th>
+                  <th>Marks Obtained</th>
+                  <th>Remarks / Status</th>
+                </tr>
+              </thead>
+              <tbody id="certScoreBody">
+                <tr>
+                  <td>Scholarship Written Test</td>
+                  <td>100</td>
+                  <td id="certMarksCell">--</td>
+                  <td id="certStatusCell">--</td>
+                </tr>
+                <tr style="font-weight: 700; background: #f0f4f8;">
+                  <td>Overall Academic Performance</td>
+                  <td colspan="3" id="certSummaryCell">--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Moral Conduct & Behavior -->
+          <div class="conduct-card">
+            <div class="conduct-title">Moral & Behavioral Assessment</div>
+            <div class="conduct-row">
+              <span>Moral Character:</span>
+              <span id="certMoral">Exemplary</span>
+            </div>
+            <div class="conduct-row">
+              <span>Discipline:</span>
+              <span id="certDiscipline">Excellent</span>
+            </div>
+            <div class="conduct-row">
+              <span>Exam Conduct:</span>
+              <span>Fair & Commendable</span>
+            </div>
+            <div class="conduct-row">
+              <span>Overall Disposition:</span>
+              <span id="certDisposition">Outstanding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Signatures -->
+        <div class="signatures">
+          <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-title">Coordinator / Convenor</div>
+          </div>
+
+          <div class="seal-wrap">
+            <div class="seal">Official Seal</div>
+          </div>
+
+          <div class="sig-block">
+            <div class="sig-line"></div>
+            <div class="sig-title">Secretary / President</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+
+      // Read directly from URL parameters
+      let sName = params.get("name");
+      let sRoll = params.get("roll");
+      let sClass = params.get("class");
+      let sSchool = params.get("school");
+      let sGuardian = params.get("guardian");
+      let sMarks = params.get("marks");
+
+      // Fallback: If URL doesn't have the school/class, try searching studentRecords
+      if ((!sSchool || sSchool === "---") && sRoll && typeof studentRecords !== "undefined") {
+        const match = studentRecords.find(function(item) {
+          const r = String(item["RollNumber"] || item["Roll No"] || "").trim().toUpperCase();
+          return r === sRoll.trim().toUpperCase();
+        });
+        if (match) {
+          sName = sName || match["Name"];
+          sClass = match["Class"];
+          sSchool = match["SCHOOLNAME"];
+          sGuardian = match["GUARDIAN'SNAME"];
+          sMarks = match["Marks"];
+        }
+      }
+
+      // Fallback: Check local / session storage
+      if (!sName) {
+        try {
+          const raw = sessionStorage.getItem("currentStudentCert") || localStorage.getItem("currentStudentCert");
+          if (raw) {
+            const data = JSON.parse(raw);
+            sName = data["Name"] || data.name;
+            sRoll = data["RollNumber"] || data.roll;
+            sClass = data["Class"] || data.class;
+            sSchool = data["SCHOOLNAME"] || data.school;
+            sGuardian = data["GUARDIAN'SNAME"] || data.guardian;
+            sMarks = data["Marks"] !== undefined ? data["Marks"] : data.marks;
+          }
+        } catch (e) {}
+      }
+
+      // Default safeguards
+      sName = sName || "Candidate Name";
+      sRoll = sRoll || "---";
+      sClass = sClass || "---";
+      sSchool = sSchool || "---";
+      sGuardian = sGuardian || "---";
+      sMarks = (sMarks !== null && sMarks !== undefined && sMarks !== "") ? sMarks : "--";
+
+      // Render to DOM
+      document.getElementById("certName").innerText = sName;
+      document.getElementById("certRoll").innerText = sRoll;
+      document.getElementById("certClass").innerText = sClass;
+      document.getElementById("certSchool").innerText = sSchool;
+      document.getElementById("certGuardian").innerText = sGuardian;
+      document.getElementById("certDate").innerText = new Date().toLocaleDateString("en-GB");
+      document.getElementById("certMarksCell").innerText = sMarks;
+
+      // Status and conduct evaluation
+      let statusText = "Qualified";
+      let conductText = "Exemplary";
+      let disciplineText = "Excellent";
+      let dispositionText = "Outstanding";
+      const num = parseFloat(sMarks);
+
+      if (sMarks === "AB") {
+        statusText = "Absent";
+        conductText = "--";
+        disciplineText = "--";
+        dispositionText = "--";
+      } else if (!isNaN(num)) {
+        if (num >= 60) {
+          statusText = "1st Division / Merit";
+          conductText = "Exemplary";
+          disciplineText = "Outstanding";
+          dispositionText = "Outstanding";
+        } else if (num >= 45) {
+          statusText = "2nd Division";
+          conductText = "Very Good";
+          disciplineText = "Excellent";
+          dispositionText = "Very Good";
+        } else {
+          statusText = "Qualified";
+          conductText = "Good";
+          disciplineText = "Good";
+          dispositionText = "Satisfactory";
+        }
+      }
+
+      document.getElementById("certStatusCell").innerText = statusText;
+      document.getElementById("certMoral").innerText = conductText;
+      document.getElementById("certDiscipline").innerText = disciplineText;
+      document.getElementById("certDisposition").innerText = dispositionText;
+      document.getElementById("certSummaryCell").innerText = `Total Score: ${sMarks} / 100 • Result: ${statusText}`;
+    });
+  </script>
+
+</body>
+</html>
