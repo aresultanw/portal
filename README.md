@@ -2,6 +2,8 @@
 
 A static results portal for the Anweshika Scholarship Exam, an initiative by Netaji Sadharan Pathagar. Students can look up their result using their full name and roll number, then open and print or save a certificate.
 
+The site includes a student-focused results homepage and an About page with information about the initiative.
+
 ## Features
 
 - Search results by name and roll number.
@@ -22,6 +24,7 @@ Then open <http://localhost:8000> in a browser. The portal uses relative file pa
 ## Project Files
 
 - `index.html` - scholarship portal and result lookup form.
+- `about.html` - information about the scholarship exam and its organizing initiative.
 - `certificate.html` - printable certificate page.
 - `js/cScript-2026.js` - result lookup logic and student records.
 - `css/` - Bootstrap, site, and responsive stylesheets.

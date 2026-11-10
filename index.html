@@ -1,91 +1,560 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>AnweshikaScholarshipExam-2026</title>
+  <meta name="description" content="Check your Anweshika Scholarship Exam 2026 result and download your certificate." />
+  <title>Anweshika Scholarship Exam 2026 | Student Results</title>
 
-  <!-- Include via CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
- 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/cScript-2026.js"></script>
- 
-  <style>
-    .form-group {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .form-group label {
-      margin-right: 10px;
-      width: 150px;
-    }
-    .form-group input {
-      flex: 1;
-    }
-		
-    .green-button {
-      background-color: green;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-		
-    .red-button {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .cert-button {
-      background-color: #c59b27;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 4px;
-      display: none;
-      margin-top: 10px;
-      text-decoration: none;
-    }
-    .cert-button:hover {
-      background-color: #aa841d;
-      color: #fff;
-    }
-		
-    .error {
-      color: red;
-      display: none;
-    }
-  </style>
+  <script src="js/cScript-2026.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #17233c;
+      --navy: #101d39;
+      --muted: #64708a;
+      --paper: #fffdf7;
+      --yellow: #ffd447;
+      --coral: #ff765e;
+      --teal: #3ab8a3;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .top_container {
+      height: auto;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .top_container::before {
+      display: none;
+    }
+
+    .header_section {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .custom_nav-container {
+      padding: 7px 0;
+    }
+
+    .navbar-brand {
+      gap: 11px;
+    }
+
+    .navbar-brand img {
+      width: 42px;
+      height: 42px;
+      margin: 0;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .navbar-brand span {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: .01em;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .82) !important;
+      font-size: 13px !important;
+      font-weight: 600;
+      letter-spacing: .08em;
+    }
+
+    .custom_nav-container .navbar-toggler {
+      border-color: rgba(255, 255, 255, .35);
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse.is-open {
+        display: block;
+      }
+
+      .navbar-collapse .navbar-nav {
+        padding: 8px 0;
+      }
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, .82fr);
+      align-items: center;
+      gap: 8%;
+      padding-top: 74px;
+      padding-bottom: 88px;
+    }
+
+    .hero-container::before,
+    .hero-container::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-container::before {
+      top: 28px;
+      right: -120px;
+      width: 350px;
+      height: 350px;
+      background: rgba(58, 184, 163, .1);
+    }
+
+    .hero-container::after {
+      bottom: 10px;
+      left: 38%;
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 212, 71, .12);
+    }
+
+    .hero_detail-box {
+      width: auto;
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 25px;
+      height: 2px;
+      background: var(--yellow);
+      content: "";
+    }
+
+    .hero_detail-box h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(38px, 5vw, 66px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      text-transform: none;
+    }
+
+    .hero_detail-box h1 span {
+      color: var(--yellow);
+    }
+
+    .hero-intro {
+      max-width: 520px;
+      margin: 23px 0 0;
+      color: rgba(255, 255, 255, .75);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .initiative-tag {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, .9);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .initiative-tag i {
+      margin-right: 7px;
+      color: var(--teal);
+    }
+
+    .student-note {
+      margin-top: 35px;
+      padding-left: 15px;
+      border-left: 3px solid var(--coral);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .student-note span {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255, 255, 255, .58);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .hero_img-container {
+      width: auto;
+    }
+
+    .result-card {
+      position: relative;
+      padding: 35px;
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: 20px;
+      color: var(--ink);
+      background: #fff;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 13px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: #165f54;
+      background: #e2f6f1;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .result-card h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .card-subtitle {
+      margin: 8px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    #resultForm .form-group {
+      display: block;
+      margin-bottom: 17px;
+    }
+
+    #resultForm label {
+      display: block;
+      width: auto;
+      margin: 0 0 7px;
+      color: #34415d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    #resultForm input {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 13px;
+      border: 1px solid #dce2ed;
+      border-radius: 8px;
+      outline: none;
+      color: var(--ink);
+      background: #fbfcfe;
+      font: inherit;
+      font-size: 13px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    #resultForm input::placeholder {
+      color: #9aa4b6;
+    }
+
+    #resultForm input:focus {
+      border-color: #3ab8a3;
+      box-shadow: 0 0 0 3px rgba(58, 184, 163, .15);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .green-button,
+    .red-button {
+      min-height: 47px;
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+
+    .green-button {
+      flex: 1;
+      color: var(--navy);
+      background: var(--yellow);
+    }
+
+    .green-button:hover {
+      background: #ffca24;
+      box-shadow: 0 7px 16px rgba(255, 202, 36, .27);
+      transform: translateY(-2px);
+    }
+
+    .red-button {
+      color: #5b657a;
+      background: #f0f2f6;
+    }
+
+    .red-button:hover {
+      background: #e4e8ef;
+    }
+
+    #resultDisplay {
+      display: none;
+      margin: 17px 0 0;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .cert-button {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: #fff;
+      background: #168a75;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .cert-button:hover,
+    .cert-button:focus {
+      color: #fff;
+      background: #107764;
+    }
+
+    .lookup-hint {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 21px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid #edf0f5;
+      color: #7a8497;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .lookup-hint i {
+      margin-top: 2px;
+      color: #e59a25;
+    }
+
+    .about_section {
+      padding: 76px 0 82px;
+      background: var(--paper);
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: #15917e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .main-heading {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      text-align: center;
+    }
+
+    .about-copy {
+      max-width: 610px;
+      margin: 13px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .about_img-box {
+      width: min(760px, 100%);
+      margin: 32px auto 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #f1f5f2;
+      box-shadow: 0 16px 42px rgba(23, 35, 60, .1);
+    }
+
+    .about_img-box img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .contact_section {
+      padding: 53px 0;
+      background: #f0f4f3;
+    }
+
+    .address-card {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 25px;
+      border-radius: 14px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(23, 35, 60, .05);
+    }
+
+    .address-card .main-heading {
+      font-size: 25px;
+    }
+
+    .address-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer_section {
+      padding: 18px 0;
+      background: var(--navy);
+    }
+
+    .footer_section p {
+      color: rgba(255, 255, 255, .72);
+      font-size: 11px;
+      letter-spacing: .03em;
+    }
+
+    @media (max-width: 767px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-top: 52px;
+        padding-bottom: 60px;
+      }
+
+      .hero_detail-box {
+        text-align: center;
+      }
+
+      .hero-intro {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .student-note {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .result-card {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_section {
+        padding: 9px 0;
+      }
+
+      .navbar-brand span {
+        max-width: 205px;
+        font-size: 13px;
+      }
+
+      .hero-container {
+        padding-top: 39px;
+      }
+
+      .hero_detail-box h1 {
+        font-size: 39px;
+      }
+
+      .hero-intro {
+        font-size: 14px;
+      }
+
+      .result-card {
+        padding: 25px 20px;
+      }
+
+      .about_section {
+        padding: 58px 0;
+      }
+
+      .address-card {
+        padding: 22px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="top_container">
     <header class="header_section">
       <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index_upd.html">
-            <img src="images/logo.png" alt="">
-            <span>AnweshikaScholarshipExam</span>
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="Anweshika logo">
+            <span>Anweshika Scholarship Exam</span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +565,13 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index_upd.html"> Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home">Results</a>
                 </li>
               </ul>
             </div>
@@ -105,85 +580,109 @@
       </div>
     </header>
 
-    <section class="hero_section">
-      <div class="hero-container container">
-        <div class="hero_detail-box">
-          <h1>
-            Welcome to <br>
-            Anweshika Scholarship Exam Portal - 2026
-          </h1>
-          <h3 style="color: red;">
-            An initiative by Netaji Sadharan Pathagar.
-          </h3>
-          <p style="color: pink;">
-            The aim of education is the knowledge, not of facts, but of values.
-          </p>
-		  
-          <div class="hero_btn-continer"> 
-            <form id="resultForm" onsubmit="event.preventDefault(); showResult();">
-              <div class="form-group">
-                <label for="inputValueName" style="color: pink; font-weight: bold;">Enter Your Full Name :</label>
-                <input type="text" id="inputValueName" name="inputValueName" autocomplete="off" required>
-              </div>
-					 
-              <div class="form-group">
-                <label for="inputValue" style="color: pink; font-weight: bold;">Enter Your Roll Number:</label>
-                <input type="text" id="inputValue" name="inputValue" autocomplete="off" required>
-              </div>
-					
-              <!-- Direct call to showResult() inside js/cScript-2026.js -->
-              <button class="green-button" type="button" onclick="showResult()">Show Result</button>
-              <button class="red-button" type="button" id="resetButton">Clear</button>
-            </form>
+    <main>
+      <section class="hero_section" id="home">
+        <div class="hero-container container">
+          <div class="hero_detail-box">
+            <p class="eyebrow">A brighter future starts here</p>
+            <h1>Your hard work.<br>Your <span>big moment.</span></h1>
+            <p class="hero-intro">
+              The Anweshika Scholarship Exam celebrates your curiosity, effort and the bright things ahead.
+              Ready to see how you did?
+            </p>
+            <div class="initiative-tag">
+              <i class="fa fa-book" aria-hidden="true"></i>
+              An initiative by Netaji Sadharan Pathagar
+            </div>
+            <p class="student-note">
+              “The beautiful thing about learning is that no one can take it away from you.”
+              <span>Keep learning. Keep growing.</span>
+            </p>
+          </div>
 
-            <p style="background-color: #d4edda; color: #155724; font-weight: 500; padding: 12px; margin-top: 15px; border-radius: 4px; display: none;" id="resultDisplay"></p>
-            
-            <!-- Download Certificate Button generated by showResult() -->
-            <a href="#" id="downloadCertBtn" class="cert-button">
-              <i class="fa fa-graduation-cap"></i> Download Certificate
-            </a>
+          <div class="hero_img-container">
+            <section class="result-card" aria-labelledby="resultHeading">
+              <span class="card-label">Scholarship exam · 2026</span>
+              <h2 id="resultHeading">Find your result</h2>
+              <p class="card-subtitle">Enter your details below to check your result and celebrate your achievement.</p>
+
+              <form id="resultForm" onsubmit="event.preventDefault(); showResult();">
+                <div class="form-group">
+                  <label for="inputValueName">Your full name</label>
+                  <input type="text" id="inputValueName" name="inputValueName" autocomplete="name"
+                    placeholder="Enter your name as registered" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputValue">Your roll number</label>
+                  <input type="text" id="inputValue" name="inputValue" autocomplete="off"
+                    placeholder="Enter your exam roll number" required>
+                </div>
+                <div class="form-actions">
+                  <button class="green-button" type="submit">
+                    Check my result <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </button>
+                  <button class="red-button" type="button" id="resetButton">Clear</button>
+                </div>
+              </form>
+
+              <p id="resultDisplay" role="status" aria-live="polite"></p>
+              <a href="#" id="downloadCertBtn" class="cert-button">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i> Download Certificate
+              </a>
+              <p class="lookup-hint">
+                <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                <span>Tip: Check your spelling and roll number carefully. Your name should match your exam registration.</span>
+              </p>
+            </section>
           </div>
         </div>
-
-        <div class="hero_img-container">
-          <div>
-            <img src="images/hero.png" alt="" class="img-fluid">
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
   </div>
 
-  <section class="about_section layout_padding">
+  <section class="about_section">
     <div class="container">
-      <h2 class="main-heading">About School</h2>
-      <p class="text-center">Education is the key to unlocking the world, a passport to freedom.</p>
+      <p class="section-kicker">Learn · Grow · Achieve</p>
+      <h2 class="main-heading">Big dreams begin with learning.</h2>
+      <p class="about-copy">
+        Every question you ask and every challenge you take on helps you move forward.
+        Keep believing in what you can become.
+      </p>
       <div class="about_img-box">
-        <img src="images/kids.jpg" alt="" class="img-fluid w-100">
+        <img src="images/kids.jpg" alt="Children learning their ABCs together">
       </div>
     </div>
   </section>
 
-  <section class="contact_section layout_padding-bottom">
+  <section class="contact_section">
     <div class="container">
-      <h2 class="main-heading">Address</h2>
-      <p class="text-center">
-        Netaji Sadharan Pathagar<br>
-        Vill & Post-Balaichak, Dist-Hooghly, Sub Div.- Arambagh, P.S-Khanakul, West Bengal-712416
-      </p>		  
+      <div class="address-card">
+        <h2 class="main-heading">Visit us</h2>
+        <p>
+          Netaji Sadharan Pathagar<br>
+          Vill &amp; Post-Balaichak, Dist-Hooghly, Sub Div.- Arambagh,<br>
+          P.S-Khanakul, West Bengal-712416
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="container-fluid footer_section">
-    <p>Maintained & Designed by @Ankush</p>
-  </section>
- 	
+  <footer class="container-fluid footer_section">
+    <p>Maintained &amp; designed by @Ankush</p>
+  </footer>
+
   <script>
-    // Reset inputs and hide state
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      document.getElementById('navbarSupportedContent').classList.toggle('show', !expanded);
+      document.getElementById('navbarSupportedContent').classList.toggle('is-open', !expanded);
+    });
+
     document.getElementById('resetButton').addEventListener('click', function() {
       document.getElementById('inputValueName').value = '';
       document.getElementById('inputValue').value = '';
-      
+
       var resDisplay = document.getElementById('resultDisplay');
       resDisplay.innerHTML = '';
       resDisplay.style.display = 'none';
@@ -197,6 +696,6 @@
         localStorage.removeItem("currentStudentCert");
       } catch(e) {}
     });
-  </script> 
+  </script>
 </body>
 </html>

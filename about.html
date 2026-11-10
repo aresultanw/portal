@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn about the Anweshika Scholarship Exam, an initiative by Netaji Sadharan Pathagar.">
+  <title>About Anweshika | Scholarship Exam 2026</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <style>
+    :root {
+      --ink: #17233c;
+      --navy: #101d39;
+      --muted: #64708a;
+      --paper: #fffdf7;
+      --yellow: #ffd447;
+      --teal: #3ab8a3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .header_section {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      background: var(--navy);
+    }
+
+    .custom_nav-container {
+      padding: 7px 0;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .navbar-brand img {
+      width: 42px;
+      height: 42px;
+      margin: 0;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .navbar-brand span {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .82) !important;
+      font-size: 13px !important;
+      font-weight: 600;
+      letter-spacing: .08em;
+    }
+
+    .nav-item.active .nav-link {
+      color: var(--yellow) !important;
+    }
+
+    .custom_nav-container .navbar-toggler {
+      border-color: rgba(255, 255, 255, .35);
+    }
+
+    .custom_nav-container .navbar-toggler .navbar-toggler-icon {
+      background-image: url("images/menu.png");
+      background-size: 32px;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse.is-open {
+        display: block;
+      }
+
+      .navbar-collapse .navbar-nav {
+        padding: 8px 0;
+      }
+    }
+
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 74px 0 78px;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .about-hero::after {
+      position: absolute;
+      top: -105px;
+      right: -100px;
+      width: 370px;
+      height: 370px;
+      border-radius: 50%;
+      background: rgba(58, 184, 163, .1);
+      content: "";
+      pointer-events: none;
+    }
+
+    .about-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 20px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 25px;
+      height: 2px;
+      background: var(--yellow);
+      content: "";
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      color: #fff;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    h1 span {
+      color: var(--yellow);
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 22px 0 0;
+      color: rgba(255, 255, 255, .76);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .initiative-tag {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, .9);
+      font-size: 12px;
+    }
+
+    .initiative-tag i {
+      margin-right: 7px;
+      color: var(--teal);
+    }
+
+    .about-content {
+      padding: 68px 0 76px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr);
+      align-items: center;
+      gap: 55px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: #15917e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(28px, 4vw, 39px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.04em;
+    }
+
+    .content-copy {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .learning-image {
+      display: block;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 16px 42px rgba(23, 35, 60, .12);
+    }
+
+    .purpose-card {
+      margin-top: 26px;
+      padding: 17px 18px;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 10px 10px 0;
+      background: #fff6d8;
+      color: #48536a;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .purpose-card strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .address-section {
+      padding: 48px 0;
+      background: #f0f4f3;
+    }
+
+    .address-card {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 25px;
+      border-radius: 14px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(23, 35, 60, .05);
+    }
+
+    .address-card h2 {
+      font-size: 25px;
+    }
+
+    .address-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .results-link {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 11px 17px;
+      border-radius: 8px;
+      color: var(--navy);
+      background: var(--yellow);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .18s, background .18s;
+    }
+
+    .results-link:hover,
+    .results-link:focus {
+      color: var(--navy);
+      background: #ffca24;
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .footer_section {
+      padding: 18px 0;
+      background: var(--navy);
+    }
+
+    .footer_section p {
+      margin: 0;
+      color: rgba(255, 255, 255, .72);
+      font-size: 11px;
+      letter-spacing: .03em;
+      text-align: center;
+    }
+
+    @media (max-width: 767px) {
+      .about-hero {
+        padding: 54px 0 60px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .learning-image {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_section {
+        padding: 9px 0;
+      }
+
+      .navbar-brand span {
+        max-width: 205px;
+        font-size: 13px;
+      }
+
+      .about-content {
+        padding: 53px 0 59px;
+      }
+
+      .address-card {
+        padding: 22px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Anweshika logo">
+          <span>Anweshika Scholarship Exam</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="about.html" aria-current="page">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#home">Results</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <p class="eyebrow">Learn · Grow · Achieve</p>
+        <h1>A little support.<br><span>A lot of possibility.</span></h1>
+        <p class="hero-copy">
+          Anweshika Scholarship Exam is an initiative by Netaji Sadharan Pathagar.
+          It gives students a chance to take on a learning challenge, celebrate their effort
+          and keep moving towards their goals.
+        </p>
+        <div class="initiative-tag">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          Encouraging curiosity, effort and a love of learning
+        </div>
+      </div>
+    </section>
+
+    <section class="about-content">
+      <div class="container content-grid">
+        <div>
+          <p class="section-kicker">For every young learner</p>
+          <h2>Every step forward matters.</h2>
+          <p class="content-copy">
+            Learning is about more than a score. It is the questions you ask, the effort
+            you bring and the confidence you build along the way. Anweshika celebrates
+            students who show up, try their best and stay curious about what comes next.
+          </p>
+          <div class="purpose-card">
+            <strong>Our message to students</strong>
+            Keep learning, keep growing and be proud of how far you have come.
+          </div>
+        </div>
+        <img class="learning-image" src="images/kids.jpg" alt="Children learning their ABCs together">
+      </div>
+    </section>
+
+    <section class="address-section">
+      <div class="container">
+        <div class="address-card">
+          <h2>Visit us</h2>
+          <p>
+            Netaji Sadharan Pathagar<br>
+            Vill &amp; Post-Balaichak, Dist-Hooghly, Sub Div.- Arambagh,<br>
+            P.S-Khanakul, West Bengal-712416
+          </p>
+          <a class="results-link" href="index.html#home">
+            Check scholarship results <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container-fluid footer_section">
+    <p>Maintained &amp; designed by @Ankush</p>
+  </footer>
+
+  <script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      document.getElementById('navbarSupportedContent').classList.toggle('show', !expanded);
+      document.getElementById('navbarSupportedContent').classList.toggle('is-open', !expanded);
+    });
+  </script>
+</body>
+</html>
