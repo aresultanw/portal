@@ -65,6 +65,11 @@ function showResult() {
       return;
     }
 
+    if (downloadBtn) {
+      downloadBtn.style.display = "none";
+      downloadBtn.href = "#";
+    }
+
     var nameVal = nameInput ? nameInput.value.trim().toUpperCase() : "";
     var rollVal = rollInput ? rollInput.value.trim().toUpperCase() : "";
 
@@ -85,6 +90,7 @@ function showResult() {
       resultDisplay.style.backgroundColor = "#ffdddd";
       resultDisplay.style.color = "#a00000";
       resultDisplay.innerText = "Error: Student database could not be loaded. Please check cScript-2026.js.";
+      if (downloadBtn) downloadBtn.style.display = "none";
       return;
     }
 
@@ -109,6 +115,23 @@ function showResult() {
       var studentClass = student["Class"] || "N/A";
       var schoolName = student["SCHOOLNAME"] || "N/A";
       var guardianName = student["GUARDIAN'SNAME"] || "N/A";
+      var isAbsent = /^(AB|ABSENT)$/i.test(String(marks).trim());
+
+      if (isAbsent) {
+        resultDisplay.style.display = "block";
+        resultDisplay.style.backgroundColor = "#ffdddd";
+        resultDisplay.style.color = "#a00000";
+        resultDisplay.innerHTML =
+          "<h4 style='margin-bottom:8px; font-weight:bold; color:#a00000;'>Marked absent</h4>" +
+          "<div>You were absent on exam day, so a result is not available. A certificate cannot be downloaded.</div>";
+
+        try {
+          localStorage.removeItem("currentStudentCert");
+          sessionStorage.removeItem("currentStudentCert");
+        } catch (e) {}
+
+        return;
+      }
 
       // Show result box
       resultDisplay.style.display = "block";
