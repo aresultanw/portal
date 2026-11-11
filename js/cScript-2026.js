@@ -53,8 +53,16 @@ function getDecodedData() {
 }
 
 // Result search function
+window.isResultAvailable = function() {
+  return Date.now() >= Date.UTC(2026, 10, 15, 1, 30);
+};
+
 function showResult() {
   try {
+    if (typeof window.isResultAvailable === "function" && !window.isResultAvailable()) {
+      return;
+    }
+
     var nameInput = document.getElementById("inputValueName");
     var rollInput = document.getElementById("inputValue");
     var resultDisplay = document.getElementById("resultDisplay");

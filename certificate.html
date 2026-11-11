@@ -55,6 +55,21 @@
       background: #102a64;
     }
 
+    .btn-print:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+    }
+
+    .release-notice {
+      margin: 0 0 20px;
+      padding: 14px 18px;
+      border-radius: 6px;
+      color: #70520a;
+      background: #fff4cf;
+      font: 14px/1.5 Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+
     .certificate {
       position: relative;
       isolation: isolate;
@@ -203,10 +218,13 @@
 <body>
   <nav class="controls" aria-label="Certificate actions">
     <a class="btn btn-back" href="index.html">&larr; Back to Results</a>
-    <button class="btn btn-print" type="button" onclick="window.print()">Download / Print Certificate (PDF)</button>
+    <button class="btn btn-print" id="printCertificateButton" type="button" disabled>Download / Print Certificate (PDF)</button>
   </nav>
+  <p class="release-notice" id="releaseNotice" role="status">
+    Certificate downloads will be available on 15 November 2026 at 7:00 AM IST. Please come back then.
+  </p>
 
-  <main class="certificate" aria-label="Anweshika merit certificate">
+  <main class="certificate" aria-label="Anweshika merit certificate" hidden>
     <img class="certificate-art" src="images/IMG-20261110-WA0013.jpg" alt="" aria-hidden="true">
     <section class="student-details" aria-label="Student certificate details">
       <div class="details-grid">
@@ -251,6 +269,32 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const certificate = document.querySelector(".certificate");
+      const releaseNotice = document.getElementById("releaseNotice");
+      const printButton = document.getElementById("printCertificateButton");
+
+      function updateCertificateAvailability() {
+        const isAvailable = window.isResultAvailable();
+        certificate.hidden = !isAvailable;
+        releaseNotice.hidden = isAvailable;
+        printButton.disabled = !isAvailable;
+        return isAvailable;
+      }
+
+      if (!updateCertificateAvailability()) {
+        const availabilityTimer = window.setInterval(function () {
+          if (updateCertificateAvailability()) {
+            window.clearInterval(availabilityTimer);
+          }
+        }, 1000);
+      }
+
+      printButton.addEventListener("click", function () {
+        if (window.isResultAvailable()) {
+          window.print();
+        }
+      });
+
       const params = new URLSearchParams(window.location.search);
       let sName = params.get("name");
       let sRoll = params.get("roll");

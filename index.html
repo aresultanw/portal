@@ -300,6 +300,21 @@
       box-shadow: 0 0 0 3px rgba(58, 184, 163, .15);
     }
 
+    #resultForm input:disabled {
+      cursor: not-allowed;
+      opacity: .65;
+    }
+
+    .release-notice {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: #70520a;
+      background: #fff4cf;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
     .form-actions {
       display: flex;
       gap: 10px;
@@ -329,6 +344,13 @@
       background: #ffca24;
       box-shadow: 0 7px 16px rgba(255, 202, 36, .27);
       transform: translateY(-2px);
+    }
+
+    .green-button:disabled {
+      cursor: not-allowed;
+      opacity: .6;
+      transform: none;
+      box-shadow: none;
     }
 
     .red-button {
@@ -604,21 +626,24 @@
             <section class="result-card" aria-labelledby="resultHeading">
               <span class="card-label">Scholarship exam · 2026</span>
               <h2 id="resultHeading">Find your result</h2>
-              <p class="card-subtitle">Enter your details below to check your result and celebrate your achievement.</p>
+              <p class="card-subtitle">Use your registered name and roll number to check your result.</p>
+              <p class="release-notice" id="releaseNotice" role="status">
+                Result lookup will open on 15 November 2026 at 7:00 AM IST. Please come back then.
+              </p>
 
-              <form id="resultForm" onsubmit="event.preventDefault(); showResult();">
+              <form id="resultForm" aria-describedby="releaseNotice" onsubmit="event.preventDefault(); showResult();">
                 <div class="form-group">
                   <label for="inputValueName">Your full name</label>
                   <input type="text" id="inputValueName" name="inputValueName" autocomplete="name"
-                    placeholder="Enter your name as registered" required>
+                    placeholder="Enter your name as registered" required disabled>
                 </div>
                 <div class="form-group">
                   <label for="inputValue">Your roll number</label>
                   <input type="text" id="inputValue" name="inputValue" autocomplete="off"
-                    placeholder="Enter your exam roll number" required>
+                    placeholder="Enter your exam roll number" required disabled>
                 </div>
                 <div class="form-actions">
-                  <button class="green-button" type="submit">
+                  <button class="green-button" type="submit" id="checkResultButton" disabled>
                     Check my result <i class="fa fa-arrow-right" aria-hidden="true"></i>
                   </button>
                   <button class="red-button" type="button" id="resetButton">Clear</button>
@@ -678,6 +703,24 @@
       document.getElementById('navbarSupportedContent').classList.toggle('show', !expanded);
       document.getElementById('navbarSupportedContent').classList.toggle('is-open', !expanded);
     });
+
+    function updateResultAvailability() {
+      var isAvailable = window.isResultAvailable();
+      document.getElementById('inputValueName').disabled = !isAvailable;
+      document.getElementById('inputValue').disabled = !isAvailable;
+      document.getElementById('checkResultButton').disabled = !isAvailable;
+      document.getElementById('releaseNotice').hidden = isAvailable;
+
+      if (isAvailable && resultAvailabilityTimer) {
+        window.clearInterval(resultAvailabilityTimer);
+      }
+      return isAvailable;
+    }
+
+    var resultAvailabilityTimer;
+    if (!updateResultAvailability()) {
+      resultAvailabilityTimer = window.setInterval(updateResultAvailability, 1000);
+    }
 
     document.getElementById('resetButton').addEventListener('click', function() {
       document.getElementById('inputValueName').value = '';
